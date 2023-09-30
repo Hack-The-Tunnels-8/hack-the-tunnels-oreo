@@ -60,8 +60,33 @@ const createProduct = async (request: Request, response: Response) => {
   });
 };
 
+const updateProduct = async (request: Request, response: Response) => {
+  const id = request.params.id;
+  
+  const authorization = await verifyAuthorization(
+    request.headers.authorization,
+  );
+
+  if (authorization.err) {
+    return error(response, {
+      error: authorization.val.message,
+      statusCode: 401,
+    });
+  }
+
+  const product = await ProductService.update(id, request.body);
+
+  return success(response, {
+    data: {
+      product: product,
+    },
+    statusCode: 201,
+  });
+};
+
 router.get("/", getProducts);
 router.get("/:id", getProduct);
 router.post("/", createProduct);
+router.put("/:id", updateProduct);
 
 export default router;

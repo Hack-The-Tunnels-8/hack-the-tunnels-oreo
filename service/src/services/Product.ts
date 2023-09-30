@@ -22,6 +22,15 @@ export const findMany = async (ids: string[]): Promise<Product[]> => {
   return products;
 };
 
+export const update = async (id: string, updateData: any): Promise<any> => {
+  const result = await prisma.product.update({
+    where: { id: parseInt(id) },
+    data: updateData
+  });
+
+  return result;
+};
+
 export const create = async (
   title: string,
   description: string,
