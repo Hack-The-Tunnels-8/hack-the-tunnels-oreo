@@ -4,8 +4,19 @@ import { success, error, verifyAuthorization } from "../utils";
 
 const router = express.Router();
 
-const getProducts = async (_: Request, response: Response) => {
-  const products = await ProductService.all();
+const getProducts = async (request: Request, response: Response) => {
+  // @ts-ignore
+  var limit = parseInt(request.query.limit);
+  // @ts-ignore
+  var start = parseInt(request.query.start);
+
+  console.log(start, limit)
+
+  var products = await ProductService.all();
+
+  if (limit || start) {
+    products = await ProductService.pagination(start, limit);
+  }
 
   return success(response, {
     data: {
