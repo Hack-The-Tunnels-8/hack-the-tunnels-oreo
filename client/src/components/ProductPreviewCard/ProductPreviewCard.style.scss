@@ -1,4 +1,7 @@
 .product-preview-card {
+  border: 2px solid grey;
+  display: flex;
+  flex-direction: row;
   margin: auto;
   text-align: center;
   max-width: 500px;
@@ -13,6 +16,12 @@
   }
 
   &__image {
-    width: 10rem;
+    width: 15rem;
   }
+}
+
+.imagecontainer{
+  padding-top: 50%;
+  margin-right: 40px;
+  margin-left: 40px;
 }

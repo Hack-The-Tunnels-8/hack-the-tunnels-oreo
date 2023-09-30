@@ -1,8 +1,11 @@
+
 .navbar {
   display: flex;
   width: 100%;
   justify-content: space-between;
-  position:fixed
+  position:fixed;
+  background-color: grey;
+  padding: 20px;
 }
 .navbar_logo{
   width:30px;

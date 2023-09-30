@@ -29,6 +29,13 @@ function Product() {
         {message && <p>{message}</p>}
         {product && (
           <>
+          <div className="mainProductContainer">
+
+            <div className="Image">
+            <img src={product.imageUrl}/>
+            </div>
+
+            <div className="details">
             <div className="product-page__product">
               <h3>Title: {product.title}</h3>
               <p>ID: {id}</p>
@@ -37,6 +44,14 @@ function Product() {
             <Link to={`/checkout/${product.id}`}>
               <button>Buy Now</button>
             </Link>
+            {/* <input>
+            Add a 
+            
+            <input/> */}
+            </div>
+          
+          
+            </div>
           </>
         )}
       </div>
