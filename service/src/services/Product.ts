@@ -22,6 +22,16 @@ export const findMany = async (ids: string[]): Promise<Product[]> => {
   return products;
 };
 
+export const pagination = async (skip: number, take: number): Promise<Product[]> => {
+  console.log(skip, take)
+  const products = await prisma.product.findMany({
+    skip: skip,
+    take: take,
+  });
+
+  return products;
+};
+
 export const update = async (id: string, updateData: any): Promise<any> => {
   const result = await prisma.product.update({
     where: { id: parseInt(id) },
