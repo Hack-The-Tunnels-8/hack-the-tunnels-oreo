@@ -8,11 +8,9 @@ const getProducts = async (request: Request, response: Response) => {
   // @ts-ignore
   var limit = parseInt(request.query.limit);
   // @ts-ignore
-  var start = parseInt(request.query.start);
+  var start = parseInt(request.query.skip);
 
-  console.log(start, limit)
-
-  var products = await ProductService.all();
+  let products = await ProductService.all();
 
   if (limit || start) {
     products = await ProductService.pagination(start, limit);

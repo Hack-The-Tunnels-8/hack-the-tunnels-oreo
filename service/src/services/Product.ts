@@ -23,10 +23,9 @@ export const findMany = async (ids: string[]): Promise<Product[]> => {
 };
 
 export const pagination = async (skip: number, take: number): Promise<Product[]> => {
-  console.log(skip, take)
   const products = await prisma.product.findMany({
-    skip: skip,
-    take: take,
+    skip: skip ? skip : 0,
+    take: take ? take : 0,
   });
 
   return products;
