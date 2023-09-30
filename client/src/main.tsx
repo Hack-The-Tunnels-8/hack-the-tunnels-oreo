@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { CookiesProvider, useCookies } from "react-cookie";
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import {
   Admin,
   Checkout,
@@ -61,9 +62,12 @@ export function Root() {
 }
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <CookiesProvider>
+  <GoogleOAuthProvider clientId="216360775551-v4mlubd4n02sqb55kkhqslvhbur9a89b.apps.googleusercontent.com">
+      <React.StrictMode>
+      <CookiesProvider>
       <Root />
-    </CookiesProvider>
-  </React.StrictMode>,
+      </CookiesProvider>
+    </React.StrictMode>
+  </GoogleOAuthProvider>
+
 );

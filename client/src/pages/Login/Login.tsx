@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Page } from "../../components";
 import { useAccountContext } from "../../context";
+import { GoogleLogin } from '@react-oauth/google';
 import "./Login.style.scss";
 
 function Login() {
@@ -17,6 +18,13 @@ function Login() {
       console.log(error);
     }
   };
+
+const responseMessage = (response: any) => {
+    console.log(response);
+};
+const errorMessage = (error: any) => {
+    console.log(error);
+};
 
   useEffect(() => {
     if (loggedIn() === true) {
@@ -47,6 +55,11 @@ function Login() {
         <button onClick={() => attemptLogin()}>
           Login
         </button>
+
+        <br/>
+        <br/>
+
+        <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />
         {message && <p>{message}</p>}
       </div>
     </Page>
