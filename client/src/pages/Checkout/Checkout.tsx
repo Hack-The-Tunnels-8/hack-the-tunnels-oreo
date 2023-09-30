@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Page } from "../../components";
+import { Page, ProductPreviewCard } from "../../components";
 import { ServiceAPI } from "../../infrastructure";
 import "./Checkout.style.scss";
 
@@ -46,7 +46,7 @@ function Checkout() {
           <>
             <h2>You are about to make an order with the following product:</h2>
             <div className="checkout-page__product">
-              <h3>Title: {product.title}</h3>
+              <ProductPreviewCard title={product.title} description={product.description} price={product.price} imageUrl={product.imageUrl} />
             </div>
             <button onClick={() => createOrder()}>
               Create Order (with customer set in code)

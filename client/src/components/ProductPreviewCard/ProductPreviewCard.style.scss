@@ -1,4 +1,8 @@
 .product-preview-card {
+  margin: auto;
+  text-align: center;
+  max-width: 500px;
+  
   &__title {
     font-style: bold;
     color: green;
