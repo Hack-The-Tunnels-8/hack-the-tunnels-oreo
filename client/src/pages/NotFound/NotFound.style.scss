@@ -1,0 +1,18 @@
+.not_found-page {
+    &__title {
+        display: flex;
+        flex-direction: column;
+        font-family: 'Poppins';
+
+        h1 {
+            margin: auto;
+            padding-top: 50px;
+        }
+
+        img {
+            margin: auto;
+            max-width: 500px;
+            padding-top: 50px;
+        }
+    }
+} 
