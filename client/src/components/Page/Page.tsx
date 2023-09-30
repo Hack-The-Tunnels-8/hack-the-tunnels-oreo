@@ -10,6 +10,7 @@ function Page({ children }: Props) {
     <>
       <Navbar />
       <div className="page">{children}</div>
+     
       <Footer />
     </>
   );
