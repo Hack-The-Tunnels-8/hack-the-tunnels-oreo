@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import { OrderService } from "../../../services";
 import { success, error } from "../utils";
+import { sendSms } from "../../sms/sms";
 
 const router = express.Router();
 
@@ -24,6 +25,9 @@ const getOrder = async (request: Request, response: Response) => {
 };
 
 const createOrder = async (request: Request, response: Response) => {
+  const number = request.body.customer.number;
+  const productTitle = request.body.lineItems[0].productTitle;
+
   const result = await OrderService.create(
     request.body.customer,
     request.body.lineItems,
@@ -35,6 +39,8 @@ const createOrder = async (request: Request, response: Response) => {
       statusCode: 400,
     });
   }
+
+  sendSms(`Ordered product: ${productTitle}`, number);
 
   return success(response, {
     data: {

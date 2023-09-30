@@ -9,11 +9,13 @@ function Checkout() {
   const [product, setProduct] = useState(null);
   const [message, setMessage] = useState(null);
 
-  const createOrder = async () => {
+  const createOrder = async (title: string) => {
     const json = await ServiceAPI.createOrderWithOneItem(
       "Test Customer",
       "test@email.com",
+      "+16136689386",
       productId,
+      title
     );
 
     if (json.error !== null) {
@@ -48,7 +50,7 @@ function Checkout() {
             <div className="checkout-page__product">
               <ProductPreviewCard title={product.title} description={product.description} price={product.price} imageUrl={product.imageUrl} />
             </div>
-            <button onClick={() => createOrder()}>
+            <button onClick={() => createOrder(product.title)}>
               Create Order (with customer set in code)
             </button>
           </>
