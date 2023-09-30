@@ -14,6 +14,8 @@ export const fetchProduct = async (id: string) => {
   return json;
 };
 
+
+
 export const createProduct = async (
   jwt: string,
   title: string,
@@ -40,3 +42,31 @@ export const createProduct = async (
   const json = await response.json();
   return json;
 };
+
+export const fetchOrders = async (
+  jwt: string,
+  title: string,
+  description: string,
+  price: number,
+  imageUrl: string = null,
+) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_API_ROOT}/api/v1/products`,
+    {
+      method: "GET",
+      body: JSON.stringify({
+        title: title,
+        description: description,
+        price: price,
+        imageUrl: imageUrl,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `${jwt}`,
+      },
+    },
+  );
+  const json = await response.json();
+  return json;
+};
+

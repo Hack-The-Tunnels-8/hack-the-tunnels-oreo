@@ -1,10 +1,21 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Page } from "../../components";
 import { useAccountContext } from "../../context";
 import "./Admin.style.scss";
+// import useEffect from 'react'
 
 function Admin() {
   const { loggedIn } = useAccountContext();
+  const navigate = useNavigate();
+
+  
+  useEffect(() => {
+    if (loggedIn() !== true) {
+      navigate("/");
+    }
+  }, [loggedIn, navigate]);
 
   return (
     <Page>
