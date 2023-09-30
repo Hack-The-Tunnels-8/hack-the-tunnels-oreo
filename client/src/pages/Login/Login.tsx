@@ -26,10 +26,26 @@ function Login() {
 
   return (
     <Page>
-      <div className="login-page">
+    <div className="login-page">
         <h1>Login</h1>
+        <div className="signup-page">
+        <input placeholder="username">
+        
+        </input>
+
+        <br/>
+        <br/>
+
+        <input placeholder="pass">
+        
+        </input>
+
+        <br/>
+        <br/>
+
+      </div>
         <button onClick={() => attemptLogin()}>
-          Login (as user set in code)
+          Login
         </button>
         {message && <p>{message}</p>}
       </div>

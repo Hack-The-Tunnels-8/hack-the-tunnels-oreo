@@ -5,8 +5,23 @@ function SignUp() {
   return (
     <Page>
       <div className="signup-page">
-        <h1>Sign Up</h1>
+        <input placeholder="username">
+        
+        </input>
+
+        <br/>
+        <br/>
+
+        <input placeholder="pass">
+        
+        </input>
+        <br/>
+        <br/>
+        <button>
+        Sign Up
+        </button>
       </div>
+      
     </Page>
   );
 }
